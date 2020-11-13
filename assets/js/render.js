@@ -83,4 +83,27 @@ class Render {
         let sprite = SPRITES.BIKE[bikeSpriteSelector];
         Render.sprite(ctx, width, height, resolution, roadWidth, sprites, sprite, scale, destX, destY, -0.5, -1.04);
       }
+
+      static text(ctx, width, height, resolution, roadWidth, sprites, speedPercent, scale, destX, destY) {
+        // steer, updown
+        let sprite = SPRITES.TEXT;
+        Render.sprite(ctx, width, height, resolution, roadWidth, sprites, sprite, scale, destX, destY, -1.04, -1.04);
+      }
+
+      // static een(ctx, width, height, resolution, roadWidth, sprites, speedPercent, scale, destX, destY) {
+      //   // steer, updown
+      //   let sprite = SPRITES.EEN;
+      //   Render.sprite(ctx, width, height, resolution, roadWidth, sprites, sprite, scale, destX, destY, -2.04, -2.04);
+      // }
+
+      // static twee(ctx, width, height, resolution, roadWidth, sprites, speedPercent, scale, destX, destY) {
+      //   // steer, updown
+      //   let sprite = SPRITES.TWEE;
+      //   Render.sprite(ctx, width, height, resolution, roadWidth, sprites, sprite, scale, destX, destY, -2.04, -2.04);
+      // }
+      // static drie(ctx, width, height, resolution, roadWidth, sprites, speedPercent, scale, destX, destY) {
+      //   // steer, updown
+      //   let sprite = SPRITES.DRIE;
+      //   Render.sprite(ctx, width, height, resolution, roadWidth, sprites, sprite, scale, destX, destY, -2.04, -2.04);
+      // }
 }

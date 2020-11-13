@@ -89,5 +89,9 @@ const KEY = {
     LAMPPOST: { x: 365, y: 1, w: 35, h: 198 }, // lamppost on the leftside
     LAMPPOST_MIRRORED: { x: 400, y: 1, w: 35, h: 198 }, // lamppost on the rightside (mirrored)
     TREE: { x: 365, y: 201, w: 38, h: 122 }, // tree
+    TEXT: {x: 393, y: 314, w: 105, h: 33 }, //text
+    // EEN: {x: 411, y: 288, w: 17, h: 19 }, //text
+    // TWEE: {x: 429, y: 288, w: 19, h: 19 }, //text
+    // DRIE: {x: 450, y: 288, w: 19, h: 19 }, //text
    };
    SPRITES.SCALE = 0.1 * (1 / SPRITES.BIKE[6].w);

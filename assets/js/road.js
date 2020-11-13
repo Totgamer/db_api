@@ -1,4 +1,4 @@
-class Road {
+ class Road {
     constructor() {
       throw new Error("Class 'Road' should be used as a static Class. Do not instantiate!");
     }
@@ -16,18 +16,20 @@ class Road {
      static reset() {
         segments = [];
         Road.addStraight(ROAD.LENGTH.LONG);
-        Road.addHill(ROAD.LENGTH.LONG, ROAD.HILL.MEDIUM)
-        Road.addCurve(ROAD.LENGTH.LONG, -ROAD.CURVE.MEDIUM, ROAD.HILL.NONE);
-        Road.addStraight();
-        Road.addSCurves();
-        Road.addLowRollingHills();
-        Road.addBumps();
-        Road.addDownhillToEnd(ROAD.LENGTH.MEDIUM);
+        // Road.addHill(ROAD.LENGTH.LONG, ROAD.HILL.MEDIUM)
+        // Road.addCurve(ROAD.LENGTH.LONG, -ROAD.CURVE.MEDIUM, ROAD.HILL.NONE);
+        // Road.addStraight();
+        // Road.addSCurves();
+        // Road.addLowRollingHills();
+        // Road.addBumps();
+        // Road.addDownhillToEnd(ROAD.LENGTH.MEDIUM);
 
         segments[Segment.find(playerZ).index + 2].color = COLORS.START;
         segments[Segment.find(playerZ).index + 3].color = COLORS.START;
         for (var n = 0; n < rumbleLength; n++) segments[segments.length - 1 - n].color = COLORS.FINISH;
         trackLength = segments.length * segmentLength;
+
+        laps++;
       }
 
      static addStraight(num) {

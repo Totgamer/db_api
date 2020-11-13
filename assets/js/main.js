@@ -19,7 +19,7 @@ let roadWidth = 2000; // actually half the roads width, easier math if the road 
 let segmentLength = 200; // length of a single segment
 let rumbleLength = 3; // number of segments per red/white rumble strip
 let trackLength = null; // z length of entire track (computed)
-let lanes = 3; // number of lanes
+let lanes = 4; // number of lanes
 let fieldOfView = 100; // angle (degrees) for field of view
 let cameraHeight = 1200; // z height of camera
 let cameraDepth = 1 / Math.tan(((fieldOfView / 2) * Math.PI) / 180); // z distance camera is from screen (computed)
@@ -49,6 +49,7 @@ let hang = 0;
 let hangDelay = 50;
 let hangTimer = 0;
 let bikeSpriteSelector = 6;
+let laps = -1;
 
 window.addEventListener(
     'load',
@@ -107,6 +108,7 @@ window.addEventListener(
        startPosition = position;
 
        position = Util.increase(position, dt * speed, trackLength);
+       console.log(laps);
 
        skyOffset = Util.increase(skyOffset, (skySpeed * playerSegment.curve * (position - startPosition)) / segmentLength, 1);
        hillsOffset = Util.increase(hillsOffset, (hillsSpeed * playerSegment.curve * (position - startPosition)) / segmentLength, 1);
@@ -183,6 +185,7 @@ window.addEventListener(
         let x = 0;
         let dx = -(baseSegment.curve * basePercent);
 
+
         ctx.clearRect(0, 0, width, height);
 
         Render.background(ctx, background, width, height, BACKGROUND.SKY, skyOffset, resolution * skySpeed * playerY);
@@ -210,14 +213,30 @@ window.addEventListener(
         maxy = segment.p1.screen.y;
         }
 
-        for(n=drawDistance-1; n>0; n--){
-             segment = segments[(baseSegment.index = n) % segments.length];
-
-             //hier sprites renderen
-
-             if (segment == playerSegment) {
-               Render.player(ctx, width, height, resolution, roadWidth, sprites, speed / maxSpeed, cameraDepth / playerZ, width / 2, height / 2 - ((cameraDepth / playerZ) * Util.interpolate(playerSegment.p1.camera.y, playerSegment.p2.camera.y, playerPercent) * height) / 2); // speed * (keyLeft ? -1 : keyRight ? 1 : 0), playerSegment.p2.world.y - playerSegment.p1.world.y
-             }
+        if(speed == 0){
+          Render.text(ctx, width, height, resolution, roadWidth, sprites, 0, 0.0008208333333333333, width / 1.56, height / 1.56);
+        } else {
+          Render.text(ctx, width, height, resolution, roadWidth, sprites, 0, 0.0005208333333333333, width / 1.04, height / 1.04);
         }
+
+     //    laps
+     //    if(){
+     //      Render.een(ctx, width, height, resolution, roadWidth, sprites, 0, 0.0006208333333333333, width / 1.56, height / 1.56);
+     //    } else if() {
+     //      Render.twee(ctx, width, height, resolution, roadWidth, sprites, 0, 0.0006208333333333333, width / 1.56, height / 1.56);
+     //    } else if() {
+     //      Render.drie(ctx, width, height, resolution, roadWidth, sprites, 0, 0.0006208333333333333, width / 1.56, height / 1.56);
+     //    }
+        
+
+     //    for(n=drawDistance-1; n>0; n--){
+     //         segment = segments[(baseSegment.index + n) % segments.length];
+
+     //         //hier sprites renderen
+
+     //         if (segment == playerSegment) {
+     //           Render.player(ctx, width, height, resolution, roadWidth, sprites, speed / maxSpeed, cameraDepth / playerZ, width / 2, height / 2 - ((cameraDepth / playerZ) * Util.interpolate(playerSegment.p1.camera.y, playerSegment.p2.camera.y, playerPercent) * height) / 2); // speed * (keyLeft ? -1 : keyRight ? 1 : 0), playerSegment.p2.world.y - playerSegment.p1.world.y
+     //         }
+     //    }
 
    };
